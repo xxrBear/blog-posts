@@ -122,7 +122,6 @@ print(Foo().bar)     # 42
 ```
 
 其实 `class Foo: ...` 只是 `type()` 的语法糖而已  
-写：
 
 ```python
 class Foo:
