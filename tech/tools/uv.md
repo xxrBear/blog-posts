@@ -30,13 +30,13 @@ cover:
 
 先看它自己怎么吹的~
 
-- 🚀 一款工具可替代 `pip` `pip-tools` `pipx` `poetry` `pyenv` `twine` `virtualenv` 以及更多。
-- ⚡️ 比 `pip` 快 10-100 倍。
-- 🗂️ 提供全面的项目管理，具有通用的锁文件。
-- ❇️ 运行脚本，支持内联依赖元数据。
-- 🛠️ 运行并安装作为 Python 包发布的工具。
-- 🔩 包含与 pip 兼容的接口，以熟悉的命令行界面提升性能。
-- 🖥️ 支持 macOS、Linux 和 Windows。
+- 🚀 一款工具可替代 `pip` `pip-tools` `pipx` `poetry` `pyenv` `twine` `virtualenv` 以及更多
+- ⚡️ 比 `pip` 快 10-100 倍
+- 🗂️ 提供全面的项目管理，具有通用的锁文件
+- ❇️ 运行脚本，支持内联依赖元数据
+- 🛠️ 运行并安装作为 Python 包发布的工具
+- 🔩 包含与 pip 兼容的接口，以熟悉的命令行界面提升性能
+- 🖥️ 支持 macOS、Linux 和 Windows
 
 ### 安装
 
