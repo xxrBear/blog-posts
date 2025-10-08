@@ -1,5 +1,5 @@
 ---
-title: "《Python工匠》读书笔记"
+title: "《Python工匠》"
 date: 2024-12-02T22:35:32+08:00
 lastmod: 2024-12-02T22:35:32+08:00
 author: ["熊大如如"]

@@ -1,5 +1,5 @@
 ---
-title: "《Python Cookbook》读书笔记"
+title: "《Python Cookbook》"
 date: 2024-11-12T21:18:42+08:00
 lastmod: 2024-11-12T21:18:42+08:00
 author: ["熊大如如"]
