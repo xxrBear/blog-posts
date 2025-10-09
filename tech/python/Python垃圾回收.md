@@ -1,5 +1,5 @@
 ---
-title: "Python垃圾回收机制"
+title: "Python 垃圾回收"
 date: 2023-02-08T17:13:42+08:00
 lastmod: 2023-02-08T17:13:42+08:00
 author: ["熊大如如"]
@@ -8,7 +8,7 @@ tags: # 标签
 description: ""
 weight:
 slug: ""
-summary: "简单介绍了Python的垃圾回收机制和Python缓存机制"
+summary: "简单介绍了 Python 的垃圾回收和缓存机制"
 draft: false # 是否为草稿
 mermaid: true #是否开启mermaid
 showToc: false # 显示目录
@@ -24,15 +24,13 @@ cover:
 
 熟悉 Python 的都知道一个概念，一切皆对象。python 对象包含了两个头部信息：一个是类型标志符，另一个是引用计数器。
 
-想要了解后者，需要继续往下看。
-
 ### Python 对象的垃圾收集
 
 在内部，Python 是这样来实现垃圾回收的。它在每一个对象中保留了一个计数器，计数器记录着当前对象被引用的次数。
 
 例如：
 
-```angular2html
+```python
 a = [99, 99, 990]
 ```
 
@@ -46,7 +44,7 @@ Python 内部缓存并复用了小的整数和小的字符串，因此，对于�
 
 例子：
 
-```ipython
+```python
 In [1]: a = 1
 
 In [2]: b = 1
