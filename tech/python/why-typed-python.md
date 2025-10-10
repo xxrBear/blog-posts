@@ -16,6 +16,9 @@ showbreadcrumbs: true #顶部显示路径
 cover:
   image: "" # 文章的图片
 ---
+作者：facebook
+
+原文链接：[Why Today’s Python Developers Are Embracing Type Hints](https://pyrefly.org/blog/why-typed-python/)
 
 Python 是目前最成功的编程语言之一，根据最新的 GitHub Octoverse 报告，它最近已经超过了 Javascript，成为 GitHub 上最受欢迎的语言。该报告强调了该语言在人工智能、数据科学和科学计算等快速增长领域的流行——这些领域需要快速实验和迭代，而开发者来自广泛的 STEM 背景，不一定都是计算机科学专业。但随着 Python 社区的扩展以及项目从实验转向生产系统，这种灵活性也可能成为一种负债。
 
