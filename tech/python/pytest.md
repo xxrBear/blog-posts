@@ -1,5 +1,5 @@
 ---
-title: "玩转 pytest：Python 测试的必备利器"
+title: "pytest 入门指南"
 date: 2025-03-14T11:12:59+08:00
 lastmod: 2025-03-14T11:12:59+08:00
 author: ["熊大如如"]
@@ -101,9 +101,9 @@ import pytest
 
 @pytest.fixture
 def db_connection():
-    print("\n🔌 Connecting to database...")
+    print("\n Connecting to database...")
     yield "Database Connection"
-    print("\n🔌 Closing database connection...")
+    print("\n Closing database connection...")
 ```
 
 ## 三、参数化测试
