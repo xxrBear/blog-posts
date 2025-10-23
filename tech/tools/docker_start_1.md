@@ -20,13 +20,13 @@ cover:
   image: "https://cdn.jsdelivr.net/gh/xxrBear/image/202503032053243.png" # 文章的图片
 ---
 
-## 一、Docker 是什么
+## 一、简介
 
-### 1.1 简介
+### 1.1 Docker 是什么
 
-`Docker` 是一种开源的容器化平台，用于开发、部署和运行应用程序。它通过容器技术将应用程序及其依赖项打包在一起，确保在不同环境中一致运行。
+Docker 是一种开源的容器化平台，用于开发、部署和运行应用程序。它通过容器技术将应用程序及其依赖项打包在一起，确保在不同环境中一致运行。
 
-核心是对 `Linux` 容器的一种封装，提供了一个简单易用的容器管理接口。
+核心是对 Linux 容器 的一种封装，提供了一个简单易用的容器管理接口。
 
 ### 1.2 Docker 解决了什么问题
 
@@ -34,7 +34,7 @@ Docker 通过容器化技术解决了环境一致性、依赖冲突、部署复�
 
 ## 二、安装
 
-`Docker` 分为社区版和企业版，个人用户安装社区版即可。
+Docker 分为社区版和企业版，个人用户安装社区版即可。
 
 ### 2.1 Ubuntu
 
@@ -69,17 +69,17 @@ sudo usermod -aG docker $USER
 
 ## 三、基本概念
 
-### 3.1 Image
+### 3.1 什么是镜像
 
-`Docker` 镜像是一个只读的模板，包含了运行应用程序所需的所有内容，例如代码、运行时环境、库、环境变量和配置文件等。镜像是容器的基础，容器是镜像的运行实例。
+Docker 镜像是一个只读的模板，包含了运行应用程序所需的所有内容，例如代码、运行时环境、库、环境变量和配置文件等。镜像是容器的基础，容器是镜像的运行实例。
 
-### 3.2 Container
+### 3.2 什么是容器
 
-`Docker` 容器是一个轻量级、可移植的软件单元，用于打包和运行应用程序及其依赖项。它基于镜像创建，提供了隔离的运行环境，确保应用程序在不同环境中一致运行。容器具有高效、隔离、可移植等优点，广泛应用于应用部署、微服务、CI/CD 等场景。
+Docker 容器是一个轻量级、可移植的软件单元，用于打包和运行应用程序及其依赖项。它基于镜像创建，提供了隔离的运行环境，确保应用程序在不同环境中一致运行。容器具有高效、隔离、可移植等优点，广泛应用于应用部署、微服务、CI/CD 等场景。
 
-## 四、Image
+## 四、镜像
 
-### 4.1 image 的构建方式
+### 4.1 镜像的构建方式
 
 基本上，获取镜像的方式有以下几种：
 
@@ -159,17 +159,17 @@ CMD ["sh", "-c", "python init_db.py && uvicorn main:app --host 0.0.0.0 --port 81
 
 让我们逐一解释一下这些命令：
 
-`FROM`：指定基础镜像
+- `FROM`：指定基础镜像
 
-`WORKDIR`：会为后续的命令设置一个默认的工作目录
+- `WORKDIR`：会为后续的命令设置一个默认的工作目录
 
-`COPY`：可以将主机上的文件或目录复制到容器内的指定路径
+- `COPY`：可以将主机上的文件或目录复制到容器内的指定路径
 
-`RUN`：用于在镜像构建过程中执行命令，每个 `RUN` 指令都会创建一个新的镜像层。为了减少镜像层数和镜像大小，建议将多个命令合并到一个 `RUN` 指令中。
+- `RUN`：用于在镜像构建过程中执行命令，每个 `RUN` 指令都会创建一个新的镜像层。为了减少镜像层数和镜像大小，建议将多个命令合并到一个 `RUN` 指令中。
 
-`EXPOSE`：用于声明容器运行时监听的网络端口，它不会自动将端口映射到宿主机，实际映射需要在运行容器时通过 `-p` 或 `-P` 参数指定。
+- `EXPOSE`：用于声明容器运行时监听的网络端口，它不会自动将端口映射到宿主机，实际映射需要在运行容器时通过 `-p` 或 `-P` 参数指定。
 
-`CMD`：用于指定容器启动时的默认执行命令
+- `CMD`：用于指定容器启动时的默认执行命令
 
 也就是说，上面的的`Dockerfile`文件的步骤是：
 
@@ -192,7 +192,7 @@ docker build -t my-fastapi .
 
 这样，我们就构建成功了一个名字为 `my-fastapi`的镜像
 
-## 六、Container
+## 六、容器
 
 ### 6.1 运行新容器
 
@@ -204,11 +204,11 @@ docker run -d -p 8000:8000 my-fastapi
 
 让我们解释一下这些参数
 
-`docker run`：运行一个新的`Docker`容器
+- `docker run`：运行一个新的`Docker`容器
 
-`-d detached mode`：以后台运行模式启动容器，使其在后台运行，而不会占用当前终端
+- `-d detached mode`：以后台运行模式启动容器，使其在后台运行，而不会占用当前终端
 
-`-p 8000:8000`：端口映射，将宿主机（本机）的 `8000` 端口映射到容器的 `8000` 端口
+- `-p 8000:8000`：端口映射，将宿主机（本机）的 `8000` 端口映射到容器的 `8000` 端口
 
 ### 6.2 查看容器
 
@@ -228,16 +228,12 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 **CONTAINER ID**
 
-含义: 容器的唯一标识符（ID）
+含义: 容器的唯一标识符
 
 说明:
 
 - 这是一个由 Docker 自动生成的哈希值，用于唯一标识一个容器
 - 通常只显示前 12 个字符，但可以通过 `docker inspect` 查看完整的 ID
-
-示例: `a1b2c3d4e5f6`
-
----
 
 **IMAGE**
 
@@ -250,7 +246,6 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 示例: `nginx`, `ubuntu:20.04`
 
----
 
 **COMMAND**
 
@@ -263,7 +258,6 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 示例: `/bin/bash`, `nginx -g 'daemon off;'`
 
----
 
 **CREATED**
 
@@ -276,13 +270,10 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 示例: `2 hours ago`, `5 minutes ago`
 
----
 
 **STATUS**
 
-含义: 容器的当前状态。
-
-说明:
+含义: 容器的当前状态
 
 - 常见的状态包括：
   - `Up`：容器正在运行
@@ -291,7 +282,6 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
   - `Paused`：容器已暂停
 - 状态后面通常会附带时间信息（如 `Up 2 hours` 或 `Exited (0) 5 minutes ago`）
 
----
 
 **PORTS**
 
@@ -305,7 +295,6 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 示例: `0.0.0.0:8080->80/tcp`, `(无)`
 
----
 
 **NAMES**
 
@@ -321,7 +310,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 ## 七、常用命令
 
-### 7.1 image 常用命令
+### 7.1 镜像的常用命令
 
 ```shell
 # 列出本地所有的镜像
@@ -340,7 +329,7 @@ docker image prune -a
 docker tag my-app:1.0 my-new-app:1.0
 ```
 
-### 7.2 container 常用命令
+### 7.2 容器的常用命令
 
 ```shell
 # 指定运行容器名称
