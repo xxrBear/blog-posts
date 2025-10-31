@@ -14,8 +14,6 @@ TocOpen: true # 自动展开目录
 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示路径
-cover:
-  image: "https://cdn.jsdelivr.net/gh/xxrBear/image//Hugo/202504241852500.jpg" # 文章的图片
 ---
 
 花了大概四天时间读完这本书。它的主题是如何让自己变得更好。对程序员来说，书中提醒我们不要把全部心思都埋在工作里，而要学会和别人交流。我很认同这一点——交流不仅能让工作推进得更顺利，也更有助于职业发展的长远积累。此外，书里还强调“为自己工作，而不是为公司卖命”，这也是很值得思考的。
