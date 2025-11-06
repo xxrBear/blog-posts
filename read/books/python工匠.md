@@ -15,8 +15,6 @@ TocOpen: true # 自动展开目录
 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示路径
-cover:
-  image: "https://cdn.jsdelivr.net/gh/xxrBear/image//Hugo/202411301048548.jpg" # 文章的图片
 ---
 
 ##

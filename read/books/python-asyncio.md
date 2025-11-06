@@ -16,8 +16,6 @@ TocOpen: true # 自动展开目录
 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示路径
-cover:
-  image: "https://cdn.jsdelivr.net/gh/xxrBear/image//Hugo/202504191856070.jpg" # 文章的图片
 ---
 
 这本《Python asyncio 并发编程》买了两年，直到最近才拿出来仔细读一读。尽管部分内容看起来像机翻的一样，例如把多进程翻译成多任务，但不可否认它是一本极具实用价值的技术指南。你可以系统性的学习 asyncio 的内容，可以掌握 asyncio 的核心概念，还对多进程、多线程编程有了更深刻的理解。

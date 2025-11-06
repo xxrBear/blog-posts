@@ -16,8 +16,6 @@ TocOpen: true # 自动展开目录
 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true # 顶部显示路径
-cover:
-    image: "https://cdn.jsdelivr.net/gh/xxrBear/image//Hugo/202411122117218.jpg"  # 文章的图片
 ---
 
 这是一本关于 Python 的食谱，意味着你可以通过本书的示例，写出更加 Pythonic 风格的代码。
