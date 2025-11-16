@@ -1,10 +1,8 @@
 ---
-title: "Ubuntu安装MySQL数据库"
+title: "Ubuntu 安装 MySQL 数据库"
 date: 2023-02-05T18:01:41+08:00
 lastmod: 2023-02-05T18:01:41+08:00
 author: ["熊大如如"]
-keywords: 
--
 tags: # 标签
     ["MySQL", "linux"]
 description: ""
@@ -22,22 +20,23 @@ cover:
   image: "https://cdn.jsdelivr.net/gh/xxrBear/image/icons8-mysql徽标-150.png"
 ---
 
-### 1.安装MySQL服务
+## 一、安装MySQL服务
 
     sudo apt update
     sudo apt install mysql-server
 
-### 2.MySQL安装脚本
+## 二、MySQL安装脚本
 
     sudo mysql_secure_installation
     -- 要记住你的密码
 
-### 3.修改root用户密码
+## 三、修改root用户密码
 
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'very_strong_password';
     FLUSH PRIVILEGES;
 
-### 4.修改MySQL密码强度
+## 四、修改MySQL密码强度
+
 > 如果root用户密码修改失败,需要修改MySQL密码强度
 
     SHOW VARIABLES LIKE 'validate_password%'; ---查看当前安全变量值
@@ -49,10 +48,9 @@ cover:
     重新改密码
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
 
+## 五、修改密码
 
-### 5.如果忘记密码，修改密码
-
-#### 5.1 处理配置文件
+### 5.1 处理配置文件
 
     # 修改配置文件 
     sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -63,7 +61,7 @@ cover:
     # MySQL重启
     system restart mysql 
 
-#### 5.2 将旧密码置空
+### 5.2 将旧密码置空
 
     执行mysql -u root -p登录数据库
 
@@ -75,7 +73,7 @@ cover:
 
     重启服务 systemctl restart mysql
 
-#### 5.3修改密码
+### 5.3修改密码
 
     mysql -uroot -p
 

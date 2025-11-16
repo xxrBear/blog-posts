@@ -6,7 +6,7 @@ author: ["熊大如如"]
 tags: # 标签
   - ["article", "python"]
 summary: "文章翻译"
-draft: false # 是否为草稿
+draft: true # 是否为草稿
 mermaid: true #是否开启mermaid
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录
