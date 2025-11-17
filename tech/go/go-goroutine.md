@@ -5,13 +5,10 @@ lastmod: 2025-11-17T17:48:30+08:00
 author: 熊大如如
 tags: # 标签
   - "go"
-description: ""
-weight:
-slug: ""
 summary: "Go 协程知识点"
 draft: false # 是否为草稿
 mermaid: true #是否开启mermaid
-showToc: true # 显示目录
+showToc: false # 显示目录
 TocOpen: true # 自动展开目录
 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
