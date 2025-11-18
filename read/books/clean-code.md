@@ -11,7 +11,7 @@ slug: ""
 summary: "《代码整洁之道》"
 draft: false
 mermaid: true
-showToc: true
+showToc: false
 TocOpen: true
 hidemeta: false
 disableShare: true

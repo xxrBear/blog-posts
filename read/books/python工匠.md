@@ -10,14 +10,12 @@ keywords:
 summary: "《Python 学习手册》的读后感"
 draft: false # 是否为草稿
 mermaid: true #是否开启mermaid
-showToc: true # 显示目录
+showToc: false
 TocOpen: true # 自动展开目录
 hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示路径
 ---
-
-##
 
 这本书讲解了 Python 工程化开发的相关内容，阅读起来既轻松有趣，又充满了专业性。对我来说，最大的收获是学到了很多工程化开发的小技巧，并且对开发过程中应该注意的细节有了更深的理解。
 
