@@ -1,5 +1,5 @@
 ---
-title: "[翻译] Python 中的 range 不是迭代器"
+title: "Python 中的 range 不是迭代器"
 date: 2025-03-30T12:25:38+08:00
 lastmod: 2025-03-30T12:25:38+08:00
 author: ["熊大如如"]
