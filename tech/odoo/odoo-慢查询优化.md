@@ -13,7 +13,7 @@ description: ""
 weight:
 slug: ""
 summary: "odoo如何进行慢查询优化"
-draft: false # 是否为草稿
+draft: true
 mermaid: true #是否开启mermaid
 showToc: true # 显示目录
 TocOpen: true # 自动展开目录
