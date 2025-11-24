@@ -16,32 +16,31 @@ showbreadcrumbs: true #顶部显示路径
 cover:
     image: "https://raw.githubusercontent.com/xxrBear/image/master/blog/go.jpg"
 ---
+
 ## 简介
 Go 语言的指针的含义是：**记录某个变量内存地址的变量**
 
 ```go
 var a int = 42
+
 var p *int = &a
 ```
 
-p 就是指针变量
+变量 p 就是指针变量，它是一个指向 `int`类型的指针
 
 ```go
 fmt.Println(p)  // 输出地址，例如：0xc000014088
 fmt.Println(*p) // 输出 42
 ```
 
-*p 意思是解引用
+`*p` 意思是解引用
 
 ## 基本操作
-### 获取内存地址
+### 修改变量的值
 ```go
 a := 100
-p := &a
-```
+P := &a
 
-### 解引用
-```go
 fmt.Println(*p) // 100
 *p = 200
 fmt.Println(a)  // 200
@@ -55,7 +54,7 @@ if p == nil {
 }
 ```
 
-## 引用传递
+### 引用传递
 Go 语言中函数的参数默认是值传递，如果想要修改原始值就必须使用指针
 
 ```go
@@ -70,3 +69,46 @@ func main() {
 }
 ```
 
++ 如果不传指针，原始值不会改变
+
+```go
+func changeValue(p int) {
+    p = 100
+}
+
+func main() {
+    a := 10
+    changeValue(a)
+    fmt.Println(a) // 输出 10
+}
+```
+
+## 注意事项
+Go 的指针很强大，同时也具有一定的危险性，你得知道
+
+### 字面量取地址
+对一个字面量取内存地址在 Go 中不被允许，因为这可能导致悬空指针
+
+```go
+println(&10)
+```
+
+### 指针类型不匹配
+```go
+var a int
+var p *float64 = &a  // 错误，类型不匹配
+```
+
+### 误用空指针
+```go
+var p *int
+fmt.Println(p) // 输出 <nil>
+
+*p = 1 // panic
+```
+
+## 总结
+想要理解 Go 语言的指针，记住下面的两句话
+
+`&`：把值变成地址  
+`*`：把地址变成值
