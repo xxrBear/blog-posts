@@ -5,9 +5,6 @@ lastmod: 2025-11-03T17:39:45+08:00
 author: 熊大如如
 tags: # 标签
   - "go"
-description: ""
-weight:
-slug: ""
 summary: "Go 语言异常"
 draft: false # 是否为草稿
 mermaid: true #是否开启mermaid
@@ -19,22 +16,12 @@ showbreadcrumbs: true #顶部显示路径
 cover:
     image: "https://raw.githubusercontent.com/xxrBear/image/master/blog/gopher_small_1.png"
 ---
-## 一、Go 的异常体系总览
-Go 中有三种异常相关机制：
 
-| 机制      | 用途                   | 类似语言       |
-| --------- | ---------------------- | -------------- |
-| `error`   | 可预期业务错误、IO错误 | 类似返回错误码 |
-| `panic`   | 不可恢复异常           | 类似抛异常     |
-| `recover` | 从 `panic` 中恢复      | 类似 catch     |
+## 一、Go 的异常体系
+Go 语言中没有像 Python、Java 那样的 `try catch`异常处理，因为 Go 的作者认为那样的异常处理方式容易被滥用而且向上抛出异常也会让程序性能不佳。取而代之的 Go 语言使用返回值来处理普通异常，使用 `panic`与 `recover`来处理严重异常，下面我们逐一介绍
 
-
-> 设计理念：Go 鼓励开发者显式处理错误，不隐藏、不捕获，而是直接返回
->
-
-## 二、Go 的显式错误机制
-### 1. error 本质
-在 Go 中，`error` 是一个内建接口：
+## 二、Go 的错误机制
+在 Go 中，`error` 是一个内建接口
 
 ```go
 type error interface {
@@ -42,110 +29,46 @@ type error interface {
 }
 ```
 
-任何实现了 `Error()` 方法的类型，都是 `error`
+Go 语言的 `errors`包下有一个`errorString`结构体实现了`error`接口，当你想自定义一个异常的时候，你可以使用这个接口，例如：
 
-### 2. 返回错误的惯用法
 ```go
-func readFile(name string) (string, error) {
-    data, err := os.ReadFile(name)
-    if err != nil {
-        return "", err
-    }
-    return string(data), nil
+package main
+
+import "fmt"
+import "errors"
+
+
+var err = errors.New("Not found error")
+
+func main() {
+	fmt.Printf("error: %v", err)
 }
+// error: Not found error
 ```
 
-> 函数返回值规则：结果值 + error 是 Go 最常见的函数签名
->
+下面我们介绍一下 Go 语言推荐的错误处理方式：
 
-### 3. 错误处理的推荐方式
 ```go
 content, err := readFile("data.txt")
+
 if err != nil {
     log.Println("read failed:", err)
     return
 }
+
 fmt.Println(content)
 ```
 
-> Go 鼓励早返回，而不是 try-catch
->
+你看到了，`if err != nil`语句你以后会天天写，早点习惯它吧！
 
-### 4. 创建错误
-#### 使用标准库
-```go
-err := errors.New("something went wrong")
-```
+除了上面的错误创建方式，Go 语言也提供一种`fmt.Errorf`方法
 
-#### 使用 `fmt.Errorf`
 ```go
 err := fmt.Errorf("invalid value: %d", x)
 ```
 
-#### 包装错误（Go 1.13+）
-```go
-err := fmt.Errorf("read config: %w", ioErr)
-```
-
-### 5. 错误解包与判断
-#### `errors.Is`
-判断某错误是否等于目标错误：
-
-```go
-if errors.Is(err, os.ErrNotExist) {
-    fmt.Println("file not found")
-}
-```
-
-#### `errors.As`
-判断并提取错误类型：
-
-```go
-var pathErr *os.PathError
-if errors.As(err, &pathErr) {
-    fmt.Println("op:", pathErr.Op)
-}
-```
-
-### 6. 自定义错误类型
-```go
-type MyError struct {
-    Code int
-    Msg  string
-}
-
-func (e *MyError) Error() string {
-    return fmt.Sprintf("code=%d, msg=%s", e.Code, e.Msg)
-}
-
-func doSomething() error {
-    return &MyError{404, "not found"}
-}
-```
-
-### 7. 错误的 nil 陷阱
-```go
-func f() error {
-    var e *MyError = nil
-    return e // 返回非空接口
-}
-```
-
-接口中保存了类型信息，因此不为 `nil`
-
-> 正确写法：
->
-
-```go
-if e == nil {
-    return nil
-}
-return e
-```
-
-## 三、panic 与 revocer
-### 1. `panic`：触发运行时异常
-`panic` 会立即停止当前函数执行，并开始向上回溯调用栈
+## 三 、运行时异常与恢复
+`panic` 方法会立即停止当前函数执行，并开始向上回溯调用栈
 
 ```go
 func main() {
@@ -161,17 +84,7 @@ goroutine 1 [running]:
 main.main()
 ```
 
-### 2. 触发 panic 的常见情况
-| 类型           | 示例             |
-| -------------- | ---------------- |
-| 数组越界       | `a[10]`          |
-| 空指针解引用   | `*nilPtr`        |
-| 除以 0         | `x / 0`          |
-| 手动调用 panic | `panic("error")` |
-
-
-### 3. `recover`：从 panic 中恢复
-`recover` 只能在 defer 函数内部调用，否则无效
+我们已经学会了怎么抛出异常，现在让我来学习如何处理异常吧，处理异常我们需要使用 `recover`方法`recover` 只能在`defer`函数内部调用，否则无效
 
 ```go
 func safeRun() {
@@ -187,13 +100,7 @@ func safeRun() {
 > `recover()` 返回 panic 的参数，可以用来判断 panic 原因
 >
 
-### 4. panic 的传播机制
-+ `panic` 会逐层向上抛；
-+ 每一层的 `defer` 都会被执行；
-+ 若无任何 `recover` 捕获，最终程序崩溃。
-
-### 5. panic 与 defer 的调用顺序
-示例：
+让我通过一个示例看看多个 defer 函数时的调用顺序
 
 ```go
 func f() {
@@ -214,9 +121,8 @@ panic: C
 > defer 是后进先出
 >
 
-## 四、defer 与调用栈清理机制
-### 1. defer 基础
-`defer` 延迟函数调用，在函数返回前执行。
+## 四、调用栈清理机制
+`defer` 延迟函数调用，在函数返回前执行
 
 ```go
 func main() {
@@ -232,22 +138,23 @@ hello
 world
 ```
 
-### 2. defer 的常见用途
-+ 关闭文件、连接：
+`defer`函数常常用于以下场景中
+
++ 关闭文件、连接
 
 ```go
 f, _ := os.Open("a.txt")
 defer f.Close()
 ```
 
-+ 解锁 mutex：
++ 解锁 mutex
 
 ```go
 mu.Lock()
 defer mu.Unlock()
 ```
 
-+ panic 恢复：
++ panic 恢复
 
 ```go
 defer func() {
@@ -257,8 +164,7 @@ defer func() {
 }()
 ```
 
-### 3. defer 参数求值时机
-参数在 defer 声明时求值，不是执行时。
+参数在 defer 声明时求值，不是执行时
 
 ```go
 func f() {
@@ -269,20 +175,9 @@ func f() {
 f() // 输出 1
 ```
 
-## 五、error 与 panic 的区别
-| 特性         | error                | panic                   |
-| ------------ | -------------------- | ----------------------- |
-| 用途         | 业务逻辑错误         | 不可恢复错误            |
-| 处理方式     | 函数返回显式处理     | 使用 defer+recover 捕获 |
-| 传播方式     | 手动传递             | 自动回溯栈              |
-| 推荐使用场景 | 文件未找到、网络错误 | 索引越界、逻辑 bug      |
+## 五、实践模式与技巧
++ 封装统一错误处理函数
 
-
-> 最佳实践：只有在真正无法继续运行时才使用 panic
->
-
-## 六、实践模式与技巧
-### 1. 封装统一错误处理函数
 ```go
 func handleErr(err error) {
     if err != nil {
@@ -291,7 +186,8 @@ func handleErr(err error) {
 }
 ```
 
-### 2. 统一 panic 捕获
++ 统一 panic 捕获
+
 ```go
 func recoveryMiddleware(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -305,7 +201,8 @@ func recoveryMiddleware(next http.Handler) http.Handler {
 }
 ```
 
-### 3. 自定义错误分类
++ 自定义错误分类
+
 ```go
 var (
     ErrNotFound = errors.New("not found")
@@ -314,3 +211,4 @@ var (
 ```
 
 使用 `errors.Is(err, ErrNotFound)` 判断错误类型
+
