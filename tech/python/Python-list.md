@@ -22,46 +22,45 @@ cover:
   image: "https://cdn.jsdelivr.net/gh/xxrBear/image/icons8-python-500.png"
 ---
 
-### 1.什么是 Python 列表
+## 概述
 
-Python 内置的数据格式，可变的、可迭代的对象。广泛应用在 Python 程序中。
+Python 内置的数据结构，可变的、可迭代的对象。广泛应用在 Python 程序中，这么说吧，如果你开始学习 Python 语言，那么列表是每天都会遇到的
 
-### 2.列表的常用方法
+## 常用方法
 
-- 向后追加列表数据
+- 添加数据
 
-```
-name_list = []
+```python
 
-name_list.append('spam')
+>>> name_list = []
+>>> name_list.append(1)
+>>> name_list
+[1]
 ```
 
 - 指定索引位置增加数据
 
-```
-name_list.insert(0, 'bob')
+```python
+>>> name_list.insert(0, 'bob')
+>>> name_list
+['bob', 1]
 ```
 
 - 删除列表最后一个数据
 
 ```python
-name = name_list.pop()
+>>> name = name_list.pop()
+>>> name
+1
 ```
 
 - 删除列表第一个数据
 
 ```python
-name = name_list.pop(0)
+>>> name = name_list.pop(0)
 ```
 
-### 3.列表实现先进先出队列
-
+- 扩展列表
 ```python
-class Name:
-    def __init__(self):
-        self.name_list = []
-    def add_name(self, name):
-        self.name_list.append(name)
-    def get_name(self):
-        return self.name_list.pop(0)
+>>> name_list.extend([4, 5])
 ```
