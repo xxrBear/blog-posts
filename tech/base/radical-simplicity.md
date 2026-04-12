@@ -91,9 +91,3 @@ Basecamp —— Rails 的创造者，践行了极简原则。他们使用纯 HTM
 作为 CTO，你需要营造一个环境，让团队在不依赖不断扩张的技术“工具动物园”的情况下成长和尝试。相反，你应该从业务中发现挑战，用你的创意、智慧和算法来解决，而不是依赖架子上更多的技术新玩具。我最自豪的编程时刻之一是：小时候自己设计算出汉诺塔问题的算法，以及在 Lucene 等框架出现之前就自己实现全文检索功能。Google 搜索的用户界面很简单，但其领域模型却非常深。当你在 Google 搜索中输入“2+2”时，它并不会搜索包含“2+2”这个词条的网页，而是直接显示一个计算器并给出结果 4。这是一个让用户惊喜的深度功能。这完全可以实现，你也可以做到！
 
 极简原则抛弃了一切无法带来客户价值的技术。它造就了深层的领域模型和深厚的技术底蕴，带来更高的质量，让每个人都更快乐。极简原则让新开发者更容易理解系统，让环境搭建和测试变得简单，并让你重新掌握一切。极简原则必将胜利。
-
-**关于 Stephan Schmidt**
-
-Stephan 曾任多家初创公司的首席技术官（CTO）、临时 CTO 以及 CTO 教练，同时也是资深开发者。在高速成长的初创公司中观察到的那些复杂技术环境促成了极简原则的诞生，因为他见过太多成本高昂却问题频出的系统。1981 年左右，他在一家百货商店自学编程，使用 VIC20 的 BASIC 语言写代码。此后，他在多种环境下用多种编程语言编写并出售过代码，使用的语言包括：C64 BASIC、6502 汇编、CPC BASIC、Z80 汇编、68000 汇编、Amiga BASIC、GFA BASIC、Blitz BASIC、QBasic、Turbo Pascal、Modula-2、Oberon、Delphi、C、C++、Lisp、Prolog、Perl、Python、Java、JavaScript、Scala、Erlang、Haskell、TypeScript、Go 和 Rust 等。他使用过的硬件包括：VIC20、Sinclair 系列、C64、Sharp 掌机、CPC、Amiga、BeBox、Atari ST、MS-DOS 个人电脑、Windows 个人电脑、Linux（未发行版）机器、Sun 工作站、SGI 机器、NeXT Cube，以及各种型号的 Mac（Quadra、iMac、MacCube、MacBook、MacBook Pro、iMac Pro 等）。
-
-Stephan 创办过几家初创公司，并曾在不同规模的公司中担任 CTO。在出售了最近的一家初创公司后，他开始从事 CTO 教练工作。Stephan 还撰写过一本名为《CTO Book》的书籍。你可以在 LinkedIn 上找到他的资料。
