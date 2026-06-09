@@ -20,9 +20,16 @@ cover:
   image: "https://cdn.jsdelivr.net/gh/xxrBear/image//Hugo/202505062222488.png" # 文章的图片
 ---
 
-## Java 异常的体系结构
+## 概述
+Java 的异常处理是 Java 运行时处理错误的一套机制。它的核心目标是：
 
-```
+- 把正常业务逻辑和错误处理逻辑分离
+- 让程序遇到异常时能恢复、提示或者优雅退出
+- 避免程序因为一个错误直接崩溃
+
+## 异常的体系结构
+
+```java
 java.lang.Throwable
 ├── Error（严重错误，程序无法处理）
 │   ├── OutOfMemoryError
@@ -40,21 +47,21 @@ java.lang.Throwable
         └── ...
 ```
 
-### Error（错误）
+- Error（错误）
 
 不建议捕获，如 OutOfMemoryError、StackOverflowError 通常是 JVM 层级的错误
 
-### Checked Exception（受检查异常）
+- Checked Exception（受检查异常）
 
 编译阶段必须处理（捕获或抛出）常见如：IOException、SQLException
 
-### Unchecked Exception（非受检查异常）
+- Unchecked Exception（非受检查异常）
 
 编译器不会强制处理 多为编程错误：NullPointerException、ArithmeticException、ArrayIndexOutOfBoundsException
 
 ## 异常处理机制
 
-### try-catch-finally
+- try-catch-finally
 
 ```java
 try {
@@ -66,7 +73,7 @@ try {
 }
 ```
 
-### 多异常处理
+- 多异常处理
 
 ```java
 catch (IOException | SQLException e) {
@@ -74,9 +81,9 @@ catch (IOException | SQLException e) {
 }
 ```
 
-### try-with-resources
+- try-with-resources
 
-`try-with-resources` 是 Java 7 引入的一个语法结构，用于 自动关闭资源，避免忘记关闭资源导致内存泄漏或句柄耗尽
+`try-with-resources` 是 Java 7 引入的一个语法结构，用于自动关闭资源，避免忘记关闭资源导致内存泄漏或句柄耗尽
 
 ```java
 try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
@@ -92,13 +99,13 @@ try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
 
 ## 抛出异常
 
-### throw 语句
+- throw 语句
 
 ```java
 throw new IllegalArgumentException("参数非法");
 ```
 
-### throws
+- throws
 
 `throws` **的作用**
 
