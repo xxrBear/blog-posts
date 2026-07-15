@@ -16,6 +16,8 @@ hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
 disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true #顶部显示路径
 ---
+原文链接：https://goodmath.scientopia.org/2011/07/14/stuff-everyone-should-do-part-2-coding-standards/
+
 在Google，我们做的另一件事——严格的编码规范——让我感到出乎意料地有效、有用。
 
 在进入Google之前，我一直认定编码规范毫无意义。我丝毫不怀疑，这类东西不过是一群斤斤计较的官僚闲着没事干弄出来、专门用来刁难真正干活的人的玩意儿。
