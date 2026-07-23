@@ -30,7 +30,7 @@ Celery 是一个简单，灵活、可靠的分布式任务执行框架，可以�
 
 **Celery 的基本组成**
 
-- Broker（消息中间件）：任务的“中转站”，比如 RabbitMQ、Redis
+- Broker（消息中间件）：任务的中转站，比如 RabbitMQ、Redis
 - Worker（工作进程）：真正执行任务的工人
 - Task（任务）：你定义好的需要异步执行的函数
 - Result Backend（结果存储）（可选）：存放任务的执行结果，比如也用 Redis、数据库等
@@ -77,7 +77,7 @@ def add(x, y):
 uv run celery -A tasks worker --loglevel=INFO
 ```
 
-注意：你不能在 windows 电脑上启动 Celery，不支持
+> 注意：你不能在 windows 电脑上启动 Celery
 
 如果你看到类似一下的内容那么启动 成功
 
@@ -106,11 +106,11 @@ uv run celery -A tasks worker --loglevel=INFO
 [2025-04-20 10:46:24,135: INFO/MainProcess] celery@MBP.local ready.
 ```
 
-最重要的一个标记是，你看`add`函数被 Celery 托管了。
+`add` 函数被 Celery 托管了
 
 ### 热重载脚本
 
-先说答案：严格来说，Celery 没有“真正意义上的热启动”。但是，可以通过一些技巧，做到“快速重载、不中断任务处理”，接近热启动的体验
+先说答案：严格来说，Celery 没有真正意义上的热启动。但是，可以通过一些技巧，做到快速重载、不中断任务处理，接近热启动的体验
 
 ```shell
 uv add watchdog
@@ -142,7 +142,7 @@ def add(self, x, y):
 
 如果加了 `bind=True`，函数第一个参数就变成了 `self`（代表任务对象），你可以在任务里调用 `self.retry()`、`self.request` 这些高级功能。
 
-**设置任务的执行超时时间**
+**设置超时时间**
 
 ```shell
 from celery import Celery
@@ -271,12 +271,12 @@ add.apply_async(
 
 多个任务串联/组合起来，按照一定的执行顺序、规则运行。就像做菜，先切菜 → 再炒菜 → 最后装盘，一步步来！在 Celery 里，这种组合多个任务执行的方式，就叫做：
 
-- 链（chain）：一个任务接一个任务执行（顺序）
-- 组（group）：一批任务同时并行执行（并发）
+- 链（chain）：一个任务接一个任务执行
+- 组（group）：一批任务同时并行执行
 - 链组混合（chord）：先一批并行跑完，再继续下一步
 - 嵌套复杂工作流：chain、group、chord 混合使用
 
-**任务链 chain（顺序执行）**
+**任务链**
 
 多个任务，一个接一个执行，每个任务的输出作为下一个任务的输入
 
@@ -365,7 +365,7 @@ workflow.apply_async()
 
 **并发数设置**
 
-决定 Worker 可以同时处理多少个任务。默认值是机器 CPU 核心数。
+决定 Worker 可以同时处理多少个任务。默认值是机器 CPU 核心数
 
 可以手动调整：
 
